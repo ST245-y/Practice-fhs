@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+        body{
+                display: flex;
+                flex-direction: column;
+                font-family: "Raleway", sans-serif;
+        }
+        nav{
+            flex-shrink: 0;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 10px;
+            background-color: rgb(44, 43, 88);
+            color: white;
+            border: black;
+        }
+        #logo {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .personal_info {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            font-size: 20px;
+        }
+        #search_bar_text{
+            font-size: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #search_bar {
+            border: solid 1px;
+            border-radius: 20px;
+            height: 30px;
+            width: 140px;
+        }
+        #search_bar:hover{
+            border-color: rgb(92,128,25);
+        }
+        #logo:hover{
+            color: rgb(92, 128, 25);
+        }
+        #search_bar:focus{
+            outline: none !important;
+            border: 2px solid rgb(92, 128, 25) !important;
+            box-shadow: none !important;
+        }
+        a:hover{
+            color: rgb(92,128,25);
+        }
+        h3{
+            font-weight: 400;
+            font-size:30px;
+            margin-bottom: 20px;
+        }
+        #spacing{
+            height: 60px;
+            border-bottom: solid 1px black;
+            opacity: 0.1;
+        }
+        .unit{
+            margin-left: 5%;
+            color: rgb(168, 165, 165);
+        }
+        .subtitle{
+            margin-left: 5%;
+        }
+        .label{
+            display: flex;
+            flex-shrink: 0;
+            width: 350px;
+            flex-direction: column;
+            overflow-y:auto;
+            margin-left: 50px;
+            padding-right: 20px;
+        }
+        .side_by_side{
+            display:flex;
+            flex: 1;
+            min-height: 0;
+            gap: 10px;
+        }
+        .label, .right {
+            min-height: 0;
+        }
+        .right{
+            padding: 20px;
+            background-color: rgb(249, 246, 246);
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+        #currentUnit {
+            background-color: rgb(217, 238, 220);
+            padding: 10px;
+        }
+        #currentUnit span{
+            display: flex;
+            background-color: rgb(14, 26, 114);
+            width: 30px;
+            margin-right:0;
+            
+        }
+        .label a{
+            color: black;
+        }
+        .other{
+            padding: 10px;
+        }
+        .other:hover{
+
+            background-color: rgb(217, 238, 220);
+        }
+        #header{
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+        .lesson h3{
+            font-size:20px;
+            font-weight:500;
+        }
+        .learn{
+            display:flex;
+            justify-content: space-between;
+            padding-right: 20px
+        }
+        .lesson a{
+            color:black;
+        }
+        .lesson a:hover{
+            color:rgb(92, 128, 25);
+        }
+
+        .practice_session h3{
+            text-align: center;
+        }
+        .practice_session p{
+            text-align: center;
+        }
+        .videos{
+            display:flex;
+            justify-content: space-evenly;
+            padding: 10px;
+            align-items: center;
+        }
+        .videos a{
+            border-radius: 20px;
+            padding: 20px;
+            align-items: center;
+            text-align: center;
+            border: 1px solid black;
+            color: black;
+        }
+        .videos a:hover{
+            border-color:rgb(92, 128, 25);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+    
+        <form>
+            <label for = "search_bar" id = "search_bar_text">Search:</label>
+            <input type = "text" id = "search_bar">
+        </form>
+        
+        <a href = "../../index.html" >
+        <div id = "logo">
+            <span> <img src = "../../FHS Patriot Head Logo.png" height = "35px"> </span>
+            <span>FHS SAT PREP</span>
+        </div>
+        </a>
+        <div class = "personal_info" id = "subtext">
+            <a href = "about.html" target = "_blank"><span>About</span></a>
+            <span>Username</span>
+        </div>
+    </nav>
+    <div id = "spacing">
+    </div>
+    
+    <div class = "side_by_side">
+        <div class = "label">
+            <h3>Algebra</h3>
+            <div class = "allUnits">
+                <a href = "algebra_unit1.html">
+                <div class = "other">
+                    <p class = "unit" >Unit 1: </p>
+                    <p class = "subtitle">Linear Equations in 1 Variable</p>
+                </div>
+                </a>
+                <hr>
+            </div>
+
+            
+            <div class = "allUnits">
+                <div id = "currentUnit">
+                    <p class = "unit">Unit 2: </p>
+                    <p class = "subtitle">Linear Equations in 2 Variables</p>
+                </div>
+                <hr>
+            </div>
+            
+
+            
+            <div class = "allUnits">
+                <a href = "algebra_unit3.html">
+                <div class = "other">
+                    <p class = "unit">Unit 3: </p>
+                    <p class = "subtitle">Linear Functions</p>
+                </div>
+                </a>
+                <hr>
+            </div>
+
+            
+            <div class = "allUnits">
+                <a href = "algebra_unit4.html">
+                <div class = "other">
+                    <p class = "unit">Unit 4: </p>
+                    <p class = "subtitle">Systems of 2 linear equations in 2 Variables</p>
+                </div>
+                </a>
+                <hr>
+            </div>
+
+            
+            <div class = "allUnits">
+                <a href = "algebra_unit5.html">
+                <div class = "other">
+                    <p class = "unit">Unit 5: </p>
+                    <p class = "subtitle">Linear Inequalities in 1 or 2 Variables</p>
+                </div>
+                </a>
+                <hr>
+            </div>
+
+            <div class = "allUnits">
+                <a href = "algebra_reviewsession.html">
+                <div class = "other">
+                    <p class = "unit">Review:</p>
+                    <p class = "subtitle">Algebra Review Session</p>
+                </div>
+                </a>
+                <hr>
+            </div>
+        
+        </div>
+        <div class = "right">
+            <h1>Unit 2: Linear Equations in 2 Variables</h1>
+            <div class = "lesson">
+                <h3>Linear Equations in Two Variables: Meaning and Structure</h3>
+                <div class = "learn">
+
+                    <a href = "Videos/Unit 2/2_1.html">
+                    <p>Interactive Video</p>
+                    </a>
+
+                    <a href = "Lessons/Unit 2/2_1.html">
+                    <p>Lesson 1 Practice</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class = "lesson">
+                <h3>Slope as Rate of Change</h3>
+                <div class = "learn">
+
+                    <a href = "Videos/Unit 2/2_2.html">
+                    <p>Interactive Video</p>
+                    </a>
+
+                    <a href = "Lessons/Unit 2/2_2.html">
+                    <p>Lesson 2 Practice</p>
+                    </a>
+                </div>
+            </div>
+            
+            <div class = "lesson">
+                <h3>Writing Linear Equations</h3>
+                <div class = "learn">
+
+                    <a href = "Videos/Unit 2/2_3.html">
+                    <p>Interactive Video</p>
+                    </a>
+
+                    <a href = "Lessons/Unit 2/2_3.html">
+                    <p>Lesson 3 Practice</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class = "lesson">
+                <h3>Interpreting Linear Graphs and Tables</h3>
+                <div class = "learn">
+                    <a href = "Videos/Unit 2/2_4.html">
+                    <p>Interactive Video</p>
+                    </a>
+
+                    <a href = "Lessons/Unit 2/2_4.html">
+                    <p>Lesson 4 Practice</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class = "lesson">
+                <h3>DSAT Strategy</h3>
+                <div class = "learn">
+                    <a href = "Videos/Unit 2/2_5.html">
+                    <p>Interactive Video</p>
+                    </a>
+                    
+                    <a href = "Lessons/Unit 2/2_5.html">
+                    <p>Lesson 5 Practice</p>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

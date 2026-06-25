@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+        body{
+                display: flex;
+                flex-direction: column;
+                font-family: "Raleway", sans-serif;
+        }
+        nav{
+            flex-shrink: 0;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 10px;
+            background-color: rgb(44, 43, 88);
+            color: white;
+            border: black;
+        }
+        #logo {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .personal_info {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            font-size: 20px;
+        }
+        #search_bar_text{
+            font-size: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        #search_bar {
+            border: solid 1px;
+            border-radius: 20px;
+            height: 30px;
+            width: 140px;
+        }
+        #search_bar:hover{
+            border-color: rgb(92,128,25);
+        }
+        #logo:hover{
+            color: rgb(92, 128, 25);
+        }
+        #search_bar:focus{
+            outline: none !important;
+            border: 2px solid rgb(92, 128, 25) !important;
+            box-shadow: none !important;
+        }
+        a:hover{
+            color: rgb(92,128,25);
+        }
+        h3{
+            font-weight: 400;
+            font-size:30px;
+            margin-bottom: 20px;
+        }
+        #spacing{
+            height: 60px;
+            border-bottom: solid 1px black;
+            opacity: 0.1;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .next{
+            display: flex;
+            justify-content: end;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .next p{
+            padding: 15px;
+            border: solid 1px rgb(92,128,25);
+            border-radius: 30px;
+            width: max-content;
+            background-color: rgb(92, 128, 25);
+            
+        }
+        .next a {
+            color: white;
+        }
+        .next a:hover{
+            cursor: pointer;
+        }
+        #home_button{
+            display:flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 30px;
+            gap: 10px;
+            color: black;
+        }
+        #home_button p{
+            font-size: 14px;
+        }
+        #home_button:hover{
+            color:rgb(92, 128, 25);
+        }
+        h3{
+            text-align: center;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+    
+        <form>
+            <label for = "search_bar" id = "search_bar_text">Search:</label>
+            <input type = "text" id = "search_bar">
+        </form>
+        
+        <a href = "../../../../index.html" >
+        <div id = "logo">
+            <span> <img src = "../../../../FHS Patriot Head Logo.png" height = "35px"> </span>
+            <span>FHS SAT PREP</span>
+        </div>
+        </a>
+        <div class = "personal_info" id = "subtext">
+            <a href = "about.html" target = "_blank"><span>About</span></a>
+            <span>Username</span>
+        </div>
+    </nav>
+    <div id = "spacing">
+    </div>
+    
+    <a href ="../../algebra_unit4.html">
+    <div id = "home_button">
+        <img src = "../../../../Home.png" width = 40px alt = "Back to Unit 1 Home Button">
+        <p>Back to Algebra</p>
+    </div>
+    </a>
+
+    <h3>Lesson 1: Systems of Equations: Meaning and Solutions</h3>
+    <div class = "content">
+        <video width = 80% height = 80% controls>
+            <source src = "practice.mp4" type = "video/mp4">
+        </video>
+    </div>
+    <div class = "next">
+        
+            <a href = "../../Lessons/Unit 4/4_1.html"><p>Next: Practice</p></a>
+    </div>
+</body>
+</html>

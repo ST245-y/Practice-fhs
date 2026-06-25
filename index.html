@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>FHS SAT Prep</title>
+        <style>
+            body{
+                font-family: "Raleway", sans-serif;
+            }
+            nav{
+                font-size: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 10px;
+                margin: 0;
+            }
+            #logo {
+                display: flex;
+                text-align: center;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .personal_info {
+                display: flex;
+                gap: 40px;
+                align-items: center;
+                font-size: 20px;
+            }
+            #search_bar_text{
+                font-size: 20px;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            #search_bar {
+                border: solid 1px;
+                border-radius: 20px;
+                height: 30px;
+                width: 140px;
+            }
+            #search_bar:hover{
+                border-color: rgb(92,128,25);
+            }
+            #logo:hover{
+                color: rgb(92, 128, 25);
+            }
+            #search_bar:focus{
+                outline: none !important;
+                border: 2px solid rgb(92, 128, 25) !important;
+                box-shadow: none !important;
+            }
+            a:hover{
+                color: rgb(92,128,25);
+            }
+            h3{
+                margin-left: 16%;
+                margin-top: 50px;
+                font-weight: 400;
+                font-size:30px;
+            }
+            p{
+                margin-left: 16%;
+                font-weight: 400;
+                font-size: 18px;
+            }
+            .sections{
+                display: flex;
+                margin-left: 16%;
+                margin-top: 60px;
+                width: 70%;
+                gap: 100px;
+            }
+            #math{
+                flex: 1;
+                height: 380px;
+                background-color: rgb(230, 250, 249);
+                padding: 25px;
+                border-radius: 30px;
+            }
+            #math h2 {
+                font-weight: 500;
+                margin-left: 0;
+            }
+            #reading h2 {
+                font-weight: 500;
+                margin-left: 0;
+            }
+            #reading{
+                flex: 1;
+                height: 380px;
+                background-color: rgb(255, 246, 217);
+                padding: 25px;
+                border-radius: 30px;
+            }
+            .lists {
+                margin-top: 10px;
+                list-style-type:none;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
+            .lists li{
+                font-size: 20px;
+            }
+            .icon{
+                display: flex;
+                gap:  10px;
+                align-items: center;
+            }
+    </style>
+
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <nav>
+    
+        <form>
+            <label for = "search_bar" id = "search_bar_text">Search:</label>
+            <input type = "text" id = "search_bar">
+        </form>
+        
+        <a href = "index.html" >
+        <div id = "logo">
+            <span> <img src = "FHS Patriot Head Logo.png" height = "35px"> </span>
+            <span>FHS SAT PREP</span>
+        </div>
+        </a>
+        <div class = "personal_info" id = "subtext">
+            <a href = "about.html" target = "_blank"><span>About</span></a>
+            <span>Username</span>
+        </div>
+    </nav>
+    <hr>
+    <h3>My Courses:</h3>
+    <p>Choose a course to start practicing.</p>
+
+    <div class = "sections">
+        <div id = "math">
+            <span><h2>SAT Math</h2></span>
+            <hr>
+            <br>
+            <ul class = "lists">
+
+                <a href = "Math/Algebra/algebra_unit1.html">
+                <div class = "icon">
+                    <li>Algebra</li>
+                </div>
+                </a>
+
+                <a href = "Math/advanced_math.html">
+                <div class = "icon">
+                    <li>Advanced Math</li>
+                </div>
+                </a>
+
+                <a href = "Math/problem-solving.html">
+                <div class = "icon">
+                    <li>Problem Solving and Data Analysis</li>
+                </div>
+                </a>
+
+                <a href = "Math/geometry.html">
+                <div class = "icon">
+                    <li>Geometry and Trigonometry</li>
+                </div>
+                </a>
+            </ul>
+        </div>
+
+
+        <div id = "reading">
+            <span><h2>SAT Reading and Writing</h2></span>
+            <hr>
+            <br>
+            <ul class = "lists">
+
+                <a href = "Reading/Info.html">
+                <div class = "icon">
+                    <li>Information and Ideas</li>
+                </div>
+                </a>
+
+                <a href = "Reading/craft.html">
+                <div class = "icon">
+                    <li>Craft and Structure</li>
+                </div>
+                </a>
+
+                <a href = "Reading/expression.html">
+                <div class = "icon">
+                    <li>Expression of Ideas</li>
+                </div>
+                </a>
+
+                <a href = "Reading/conventions.html">
+                <div class = "icon">
+                    <li>Standard English and Conventions</li>
+                </div>
+                </a>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
