@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Raleway", sans-serif;
+        background: #f8f9fb;
+        overflow: auto;
+    }
+    body{
+            display: flex;
+            flex-direction: column;
+            font-family: "Raleway", sans-serif;
+    }
+    nav{
+        flex-shrink: 0;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px;
+        background-color: rgb(44, 43, 88);
+        color: white;
+        border: black;
+    }
+    #logo {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .personal_info {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        font-size: 20px;
+    }
+    #search_bar_text{
+        font-size: 20px;
+    }
+    nav a{
+        text-decoration: none;
+        color: white;
+    }
+    #search_bar {
+        border: solid 1px;
+        border-radius: 20px;
+        height: 30px;
+        width: 140px;
+    }
+    #search_bar:hover{
+        border-color: rgb(92,128,25);
+    }
+    #logo:hover{
+        color: rgb(92, 128, 25);
+    }
+    #search_bar:focus{
+        outline: none !important;
+        border: 2px solid rgb(92, 128, 25) !important;
+        box-shadow: none !important;
+    }
+    nav a:hover{
+        color: rgb(92,128,25);
+    }
+    h3 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 28px;
+        margin: 20px 0;
+    }
+    #spacing{
+        height: 60px;
+        border-bottom: solid 1px black;
+        opacity: 0.1;
+    }
+    .content {
+        padding: 30px 0;
+    }
+    .next{
+        display: flex;
+        margin-right: 80px;
+        justify-content: right;
+        margin-bottom: none;
+    }
+    .next p{
+    
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: solid 1px rgb(92,128,25);
+        border-radius: 30px;
+        width: max-content;
+        background-color: rgb(92, 128, 25);
+        
+    }
+    .next a {
+        color: white;
+    }
+    .next a:hover{
+        cursor: pointer;
+    }
+    #home_button{
+        display:flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 30px;
+        gap: 10px;
+        color: black;
+    }
+    #home_button p{
+        font-size: 14px;
+    }
+    #home_button:hover{
+        color:rgb(92, 128, 25);
+    }
+    h3{
+        text-align: center;
+        font-weight: 400;
+    }
+
+    .question form{
+        display: flex;
+        flex-direction: column;  
+        gap: 20px;
+
+    }
+    .option {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid #e6e6e6;
+        transition: 0.2s ease;
+        background: white;
+    }
+
+    .option:hover {
+        background-color: #f3f3f3;
+        cursor: pointer;
+    }
+    .option input{
+        background-color: rgb(92, 128, 25);
+    }
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .row img{
+        width: 100%;
+    }
+    button {
+        background-color: transparent;
+        border: none;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    .crossed {
+        opacity: 0.4;
+        text-decoration: line-through;
+    }
+
+    .question {
+        display: none;
+        width: min(800px, 92%);
+        margin: 0 auto 40px auto;
+        background: white;
+        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+    .question.active {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 16px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #e6e6e6;
+    }
+
+    .submit {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.5%;
+        margin-top: none;
+        margin-right: 2%;
+
+    }
+    .submit button{
+        background-color: rgb(92, 128, 25);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #solution {
+        display: none;
+    }
+
+
+    
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .modal-content {
+        background: white;
+        width: min(800px, 90%);
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #next{
+        display: none;
+    }
+    .results-container{
+        display: none;
+        min-height: 75vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .results-card{
+        width: min(650px, 92%);
+        padding: 45px;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 0 10px 35px rgba(0,0,0,.08);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .results-card h1{
+        margin:0;
+        font-size:42px;
+        font-weight:700;
+    }
+
+
+    .subtitle{
+        margin:15px 0 35px;
+        font-size:20px;
+        color:#666;
+    }
+
+
+    .score-circle{
+        width:180px;
+        height:180px;
+
+        border:8px solid rgb(92,128,25);
+        border-radius:50%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+
+        margin-bottom:40px;
+    }
+
+
+    .score-number{
+        font-size:48px;
+        font-weight:bold;
+    }
+
+    .score-label{
+        font-size:18px;
+    }
+
+    .results-stats{
+        width:100%;
+        display:flex;
+        gap:20px;
+        margin-bottom:35px;
+    }
+
+    .stat{
+        flex:1;
+        background:#f6f7fa;
+        border-radius:16px;
+        padding:20px;
+
+        text-align:center;
+    }
+
+    .stat h2{
+        font-size:38px;
+        margin:0;
+    }
+
+    .stat p{
+        margin-top:8px;
+        color:#666;
+    }
+
+    .buttons{
+        display:flex;
+        gap:15px;
+        margin-top:10px;
+    }
+
+    .primary,.secondary{
+        padding:14px 28px;
+        border-radius:12px;
+        font-size:17px;
+    }
+
+    .next_lesson{
+        display:none;
+        margin-top:20px;
+    }
+
+    .next_lesson a{
+        text-decoration:none;
+    }
+
+    .next_lesson button{
+        background:rgb(92,128,25);
+        color:white;
+        border:none;
+        padding:14px 28px;
+        border-radius:12px;
+        font-size:18px;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+    
+        <form>
+            <label for = "search_bar" id = "search_bar_text">Search:</label>
+            <input type = "text" id = "search_bar">
+        </form>
+        
+        <a href = "../../../../index.html" >
+        <div id = "logo">
+            <span> <img src = "../../../../FHS Patriot Head Logo.png" height = "35px"> </span>
+            <span>FHS SAT PREP</span>
+        </div>
+        </a>
+        <div class = "personal_info" id = "subtext">
+            <a href = "about.html" target = "_blank"><span>About</span></a>
+            <span>Username</span>
+        </div>
+    </nav>
+    <div id = "spacing">
+    </div>
+    
+    <a href ="../../algebra_unit2.html">
+    <div id = "home_button">
+        <img src = "../../../../Home.png" width = 40px alt = "Back to Unit 2 Home Button">
+        <p>Back to Algebra Unit 2</p>
+    </div>
+    </a>
+
+    <h3>Lesson 1: Linear Equations in Two Variables: Meaning and Structure</h3>
+
+    <div class = "quiz">
+        <div class = "content">
+            <div class = "question" id = "q1">
+                <p>$$C = 1.50m + 3.50$$A taxi service uses the given equation to calculate the total cost, $C$, in dollars, for a ride of $m$ miles. What is the best interpretation of the number $3.50$ in this context?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "A">
+                            <span class = "text">A. The initial flat fee charged before any miles are driven.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "B">
+                            <span class = "text">B. The maximum possible cost of a taxi ride.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "C">
+                            <span class = "text">C. The cost per mile of the taxi ride.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "D">
+                            <span class = "text">D. The total number of miles for an average ride.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q2">
+                <p>$$4.5x + 2.5y = 90$$A school club sells $x$ boxes of popcorn and $y$ drinks at a sporting event to raise money. The club goal is modeled by the given equation. What does the coefficient $4.5$ represent in this context?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "A">
+                            <span class = "text">A. The total number of popcorn boxes sold.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "B">
+                            <span class = "text">B. The price, in dollars, of a single drink.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "C">
+                            <span class = "text">C. The price, in dollars, of a single box of popcorn.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "D">
+                            <span class = "text">D. The total amount of money raised by the club.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q3">
+                <p>$$W = -0.4d + 12$$An environmental study models the total weight of a specific glacier, $W$, in millions of tons, where $d$ represents the number of days since the start of spring. What is the best interpretation of the statement 'the $d$-intercept of the graph of this equation is 30'?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "A">
+                            <span class = "text">A. The glacier loses 30 million tons of weight per day. </span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "B">
+                            <span class = "text">B. The initial weight of the glacier at the start of spring was 30 million tons.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "C">
+                            <span class = "text">C. Exactly 30 days after the start of spring, the glacier will have melted completely and have a weight of 0 tons.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "D">
+                            <span class = "text">D. The glacier's weight decreases for 12 days before stabilizing at 30 million tons.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q4">
+                <p>$$P = 28.5 + 0.75h$$A structural engineer calculates the internal pressure, $P$, in pounds per square inch (psi), of a foundational column after it has been submerged in water for $h$ hours. What is the best interpretation of the number $0.75$ in this equation?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "A">
+                            <span class = "text">A. The increase in internal pressure, in psi, for every one hour of submersion.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "B">
+                            <span class = "text">B. The initial pressure of the column before submersion.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "C">
+                            <span class = "text">C. The total number of hours the column can remain submerged safely.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "D">
+                            <span class = "text">D. The total pressure inside the column after 28.5 hours.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q5">
+                <p>$$15A + 9S = 4500$$The given equation models the ticket revenue for an evening theater performance, where $A$ is the number of adult tickets sold and $S$ is the number of student tickets sold. If the graph of this equation is plotted on an $AS$-plane where $A$ is on the horizontal axis, what does the vertical intercept of the graph represent?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "A">
+                            <span class = "text">A. The price of a single student ticket.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "B">
+                            <span class = "text">B. The total revenue collected if only adult tickets are sold.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "C">
+                            <span class = "text">C. The total number of tickets sold combined.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "D">
+                            <span class = "text">D. The maximum number of student tickets that can be sold if zero adult tickets are sold.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q6">
+                <p>$$y = 35x + 120$$A commercial repair technician uses the given equation to model the total charge, $y$, in dollars, for a service call taking $x$ hours. If the technician modifies the pricing structure to increase the base diagnostic fee by $\$40$ and lower the hourly rate by $\$5$, what is the expression for the new total charge?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "A">
+                            <span class = "text">A. $y = 40x + 115$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "B">
+                            <span class = "text">B. $y = 75x + 120$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "C">
+                            <span class = "text">C. $y = 30x + 160$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "D">
+                            <span class = "text">D. $y = 30x + 80$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q7">
+                <p>$$V = 14000 - 1850t$$A company monitors the depreciation of a delivery vehicle using the given linear model, where $V$ represents the value of the vehicle, in dollars, $t$ years after it was purchased. Which statement is supported by the structure of the model?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "A">
+                            <span class = "text">A. The vehicle will have a value of $\$0$ exactly 14 years after purchase.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "B">
+                            <span class = "text">B. The vehicle's value increases by $\$14,000$ each year.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "C">
+                            <span class = "text">C. The purchase price of the vehicle was $\$1,850$.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "D">
+                            <span class = "text">D. The vehicle loses approximately $\$1,850$ in value every year after purchase.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q8">
+                <p>$$ax + by = c$$In the given equation, $a$, $b$, and $c$ are positive constants. If this equation is graphed in the standard $xy$-plane, which of the following statements about the graph must be true?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "A">
+                            <span class = "text">A. The graph has a positive slope and a positive y-intercept.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "B">
+                            <span class = "text">B. The graph has a negative slope and a positive y-intercept.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "C">
+                            <span class = "text">C. The graph passes through the origin (0,0).</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "D">
+                            <span class = "text">D. The graph is a completely horizontal line.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q9">
+                <p>$$y = m(x - 4) + 10$$In the given equation, $m$ is a positive constant. If this equation is graphed in the standard $xy$-plane, which of the following geometric interpretations of its structural form is correct?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "A">
+                            <span class = "text">A. The line has an $x$-intercept located at $(4, 0)$.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "B">
+                            <span class = "text">B. The line has a $y$-intercept at $(0, 10)$.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "C">
+                            <span class = "text">C. The line shifts downward by 4 units for every 10 units it moves to the right.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "D">
+                            <span class = "text">D. The line is guaranteed to pass through the specific coordinate point (4, 10) regardless of the value of $m$.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q10">
+                <p>An oceanographic research team measures water temperature at various depths. They determine that the relationship is linear and can be modeled by the equation $T = -0.08d + k$, where $T$ is the temperature in degrees Celsius, $d$ is the depth below the surface in meters, and $k$ is a constant. If the temperature decreases by $1.2$ degrees Celsius for every increase of $15$ meters in depth, and the temperature at a depth of 50 meters is 18 degrees Celsius, what is the value of $k$?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "A">
+                            <span class = "text">A. $14$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "B">
+                            <span class = "text">B. $22$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "C">
+                            <span class = "text">C. $18$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "D">
+                            <span class = "text">D. $26$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+            
+
+            
+        </div>
+
+        <div class = "submit">
+                <p id = "isSelected"></p>
+                <button type = "button" id = "solution" onclick = "showSolution()"> View Explanation</button>
+                <button type = "button" id = "sub" onclick = "gradeQuestion()" >Check Answer</button>
+                <button type = "button" id = "next" onclick = "nextQuestion()">Next Question</button>
+                
+        </div>
+
+        <div id="feedbackModal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">✕</button>
+                <div id="feedbackBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div class="results-card">
+
+            <h1>Quiz Complete</h1>
+
+            <div class="score-circle">
+                <span class="score-number">--</span>
+                <span class="score-label">Score</span>
+            </div>
+
+            <p class="subtitle">
+                Nice work. Here’s how you did on this lesson.
+            </p>
+
+            <div class="results-stats">
+                <div class="stat">
+                    <h2 id = "correct">--</h2>
+                    <p>Correct</p>
+                </div>
+
+                <div class="stat">
+                    <h2 id = "incorrect">--</h2>
+                    <p>Incorrect</p>
+                </div>
+
+                <div class="stat">
+                    <h2>10</h2>
+                    <p>Total</p>
+                </div>
+            </div>
+            <div class = "next_lesson">
+                <a href = "../../Videos/Unit 2/2_2.html"><button>Next Up: Video Lesson 2.2</button></a>
+            </div>
+
+        </div>
+        
+    </div>
+
+</body>
+<script>
+    const answers = {
+        q1: "A",
+        q2: "C",
+        q3: "C",
+        q4: "A",
+        q5: "D",
+        q6: "C",
+        q7: "D",
+        q8: "B",
+        q9: "D",
+        q10: "B"
+    }
+
+    const resultsPage = document.querySelector(".results-container");
+    const quizScreen = document.querySelector(".quiz");
+    const resultsCard = document.querySelector(".results-card");
+
+    function strikeThroughBefore(button){
+        const row = button.parentElement;
+        const label = row.querySelector(".option");
+        const radio = label.querySelector("input[type='radio']");
+
+        const isCrossed = label.classList.toggle("crossed");
+
+        if (isCrossed){
+            radio.checked = false;
+        }
+    }
+
+    const questions = document.querySelectorAll(".question");
+    let current = 0;
+
+    function showQuestion(index) {
+        questions.forEach(q => q.classList.remove("active"));
+        questions[index].classList.add("active");
+    }    
+    let numCorrect = 0;
+    const next = document.getElementById("next");
+    const view = document.getElementById("solution");
+    
+    function gradeQuestion() {
+        
+        const activeQuestion = document.querySelector(".question.active");
+        const questionName = activeQuestion.id;
+        const correctOption = activeQuestion.querySelector(`input[value="${answers[questionName]}"]`);
+        const selected = document.querySelector(`input[name="${questionName}"]:checked`);
+        
+        activeQuestion.querySelectorAll(".option").forEach(opt => {
+            opt.style.backgroundColor = "";
+        });
+
+        if (!selected) {
+            alert("Please choose an option before submitting. There are no penalities for guessing on the DSAT!")
+            return;
+        }
+
+        let correctAnswer = answers[questionName];
+        let isCorrect = correctAnswer == selected.value;
+
+        
+        if (isCorrect){
+            selected.closest(".option").style.backgroundColor = "#c8f7c5";
+            numCorrect ++;
+            view.style.display = "block";
+            next.style.display = "block";
+
+        }
+        else {
+            selected.closest(".option").style.backgroundColor = "#f7c5c5";
+            correctOption.closest(".option").style.backgroundColor = "#c8f7c5";
+            view.style.display = "block";
+            next.style.display = "block";
+
+        }
+
+        
+        
+    }
+
+    showQuestion(0);
+    
+    function showSolution() {
+        const modal = document.getElementById("feedbackModal");
+        const box = document.getElementById("feedbackBox");
+        box.innerHTML = `
+            <video src="practice.mp4" controls style="width:100%; border-radius:10px;"></video>
+        `;
+        modal.style.display = "flex";
+
+}
+
+    function closeModal() {
+    document.getElementById("feedbackModal").style.display = "none";
+}
+
+    function nextQuestion() {
+        
+        if (current < questions.length - 1) {
+            current += 1;
+            showQuestion(current);
+        }else{
+            next.style.display = "none";
+            view.style.display = "none";
+            showResults();
+        }
+        next.style.display = "none";
+        view.style.display = "none";
+    }
+    
+    
+
+    const nextLessonButton = document.querySelector(".next_lesson");
+
+    
+
+    function showResults() {
+        quizScreen.style.display = "none";
+        resultsPage.style.display = "flex";
+        resultsCard.style.display = "flex";
+        nextLessonButton.style.display = "block";
+
+        document.getElementById("correct").textContent = numCorrect;
+        document.getElementById("incorrect").textContent = questions.length - numCorrect;
+
+        document.querySelector(".score-number").textContent = Math.round(numCorrect / questions.length * 100) + "%"
+    }
+</script>
+</html>

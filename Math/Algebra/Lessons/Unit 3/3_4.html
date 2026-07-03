@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Raleway", sans-serif;
+        background: #f8f9fb;
+        overflow: auto;
+    }
+    body{
+            display: flex;
+            flex-direction: column;
+            font-family: "Raleway", sans-serif;
+    }
+    nav{
+        flex-shrink: 0;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px;
+        background-color: rgb(44, 43, 88);
+        color: white;
+        border: black;
+    }
+    #logo {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .personal_info {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        font-size: 20px;
+    }
+    #search_bar_text{
+        font-size: 20px;
+    }
+    nav a{
+        text-decoration: none;
+        color: white;
+    }
+    #search_bar {
+        border: solid 1px;
+        border-radius: 20px;
+        height: 30px;
+        width: 140px;
+    }
+    #search_bar:hover{
+        border-color: rgb(92,128,25);
+    }
+    #logo:hover{
+        color: rgb(92, 128, 25);
+    }
+    #search_bar:focus{
+        outline: none !important;
+        border: 2px solid rgb(92, 128, 25) !important;
+        box-shadow: none !important;
+    }
+    nav a:hover{
+        color: rgb(92,128,25);
+    }
+    h3 {
+        text-align: center;
+        font-weight: 500;
+        font-size: 28px;
+        margin: 20px 0;
+    }
+    #spacing{
+        height: 60px;
+        border-bottom: solid 1px black;
+        opacity: 0.1;
+    }
+    .content {
+        padding: 30px 0;
+    }
+    .next{
+        display: flex;
+        margin-right: 80px;
+        justify-content: right;
+        margin-bottom: none;
+    }
+    .next p{
+    
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: solid 1px rgb(92,128,25);
+        border-radius: 30px;
+        width: max-content;
+        background-color: rgb(92, 128, 25);
+        
+    }
+    .next a {
+        color: white;
+    }
+    .next a:hover{
+        cursor: pointer;
+    }
+    #home_button{
+        display:flex;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 30px;
+        gap: 10px;
+        color: black;
+    }
+    #home_button p{
+        font-size: 14px;
+    }
+    #home_button:hover{
+        color:rgb(92, 128, 25);
+    }
+    h3{
+        text-align: center;
+        font-weight: 400;
+    }
+
+    .question form{
+        display: flex;
+        flex-direction: column;  
+        gap: 20px;
+
+    }
+    .option {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid #e6e6e6;
+        transition: 0.2s ease;
+        background: white;
+    }
+
+    .option:hover {
+        background-color: #f3f3f3;
+        cursor: pointer;
+    }
+    .option input{
+        background-color: rgb(92, 128, 25);
+    }
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .row img{
+        width: 100%;
+    }
+    button {
+        background-color: transparent;
+        border: none;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    .crossed {
+        opacity: 0.4;
+        text-decoration: line-through;
+    }
+
+    .question {
+        display: none;
+        width: min(800px, 92%);
+        margin: 0 auto 40px auto;
+        background: white;
+        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+    .question.active {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 16px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #e6e6e6;
+    }
+
+    .submit {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1.5%;
+        margin-top: none;
+        margin-right: 2%;
+
+    }
+    .submit button{
+        background-color: rgb(92, 128, 25);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    #solution {
+        display: none;
+    }
+
+
+    
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .modal-content {
+        background: white;
+        width: min(800px, 90%);
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 18px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #next{
+        display: none;
+    }
+    .results-container{
+        display: none;
+        min-height: 75vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .results-card{
+        width: min(650px, 92%);
+        padding: 45px;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 0 10px 35px rgba(0,0,0,.08);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .results-card h1{
+        margin:0;
+        font-size:42px;
+        font-weight:700;
+    }
+
+
+    .subtitle{
+        margin:15px 0 35px;
+        font-size:20px;
+        color:#666;
+    }
+
+
+    .score-circle{
+        width:180px;
+        height:180px;
+
+        border:8px solid rgb(92,128,25);
+        border-radius:50%;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+
+        margin-bottom:40px;
+    }
+
+
+    .score-number{
+        font-size:48px;
+        font-weight:bold;
+    }
+
+    .score-label{
+        font-size:18px;
+    }
+
+    .results-stats{
+        width:100%;
+        display:flex;
+        gap:20px;
+        margin-bottom:35px;
+    }
+
+    .stat{
+        flex:1;
+        background:#f6f7fa;
+        border-radius:16px;
+        padding:20px;
+
+        text-align:center;
+    }
+
+    .stat h2{
+        font-size:38px;
+        margin:0;
+    }
+
+    .stat p{
+        margin-top:8px;
+        color:#666;
+    }
+
+    .buttons{
+        display:flex;
+        gap:15px;
+        margin-top:10px;
+    }
+
+    .primary,.secondary{
+        padding:14px 28px;
+        border-radius:12px;
+        font-size:17px;
+    }
+
+    .next_lesson{
+        display:none;
+        margin-top:20px;
+    }
+
+    .next_lesson a{
+        text-decoration:none;
+    }
+
+    .next_lesson button{
+        background:rgb(92,128,25);
+        color:white;
+        border:none;
+        padding:14px 28px;
+        border-radius:12px;
+        font-size:18px;
+    }
+    </style>
+</head>
+<body>
+    <nav>
+    
+        <form>
+            <label for = "search_bar" id = "search_bar_text">Search:</label>
+            <input type = "text" id = "search_bar">
+        </form>
+        
+        <a href = "../../../../index.html" >
+        <div id = "logo">
+            <span> <img src = "../../../../FHS Patriot Head Logo.png" height = "35px"> </span>
+            <span>FHS SAT PREP</span>
+        </div>
+        </a>
+        <div class = "personal_info" id = "subtext">
+            <a href = "about.html" target = "_blank"><span>About</span></a>
+            <span>Username</span>
+        </div>
+    </nav>
+    <div id = "spacing">
+    </div>
+    
+    <a href ="../../algebra_unit3.html">
+    <div id = "home_button">
+        <img src = "../../../../Home.png" width = 40px alt = "Back to Unit 3 Home Button">
+        <p>Back to Algebra Unit 3</p>
+    </div>
+    </a>
+
+    <h3>Lesson 4: Modeling Real-World Situations with Linear Functions</h3>
+
+    <div class = "quiz">
+        <div class = "content">
+            <div class = "question" id = "q1">
+                <p>A local landscaping company charges an initial equipment mobilization fee of $\$50$ plus an additional fee of $\$30$ per hour for lawn maintenance services. Which of the following equations models the total cost, $C$, in dollars, for a job that takes $h$ hours?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "A">
+                            <span class = "text">A. $C = 30h + 50$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "B">
+                            <span class = "text">B. $C = 80h$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "C">
+                            <span class = "text">C. $C = 50h + 30$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q1" value = "D">
+                            <span class = "text">D. $C = 30h - 50$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q2">
+                <p>A community theater group has a budget of $1,200 to spend on advertising for an upcoming production. They plan to purchase x radio ad spots that cost $75 each and y local newspaper ads that cost $40 each. Which equation models this relationship?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "A">
+                            <span class = "text">A. $115(x + y) = 1200$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "B">
+                            <span class = "text">B. $75x - 40y = 1200$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "C">
+                            <span class = "text">C. $40x + 75y = 1200$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q2" value = "D">
+                            <span class = "text">D. $75x + 40y = 1200$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q3">
+                <p>A sub-zero commercial freezer starts at an internal temperature of $22^\circ\text{C}$ when turned on. The cooling mechanism drops the temperature inside the unit at a constant rate of $1.8^\circ\text{C}$ every 4 minutes. Which function models the internal temperature, $T$, in degrees Celsius, after $m$ minutes of operation?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "A">
+                            <span class = "text">A. $T = 22 + 0.45m$ </span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "B">
+                            <span class = "text">B. $T = -1.8m - 22$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "C">
+                            <span class = "text">C. $T = 22 - 1.8m$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q3" value = "D">
+                            <span class = "text">D. $T = 22 - 0.45m$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q4">
+                <p>A warehouse logistics coordinator must load a freight elevator with two types of cargo shipments. Standard crates weigh 120 pounds each, and oversized crates weigh 350 pounds each. The elevator has a maximum structural carrying capacity limit of 5,000 pounds. If the elevator is safely loaded with $s$ standard crates and a number of oversized crates that puts it exactly at maximum capacity, which expression represents the number of oversized crates on the elevator?<p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "A">
+                            <span class = "text">A. $(5000 - 120s)/350$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "B">
+                            <span class = "text">B. $5000 - 120s - 350$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "C">
+                            <span class = "text">C. $(5000 - 350s)/120$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q4" value = "D">
+                            <span class = "text">D. $5000/(120 + 350s)$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q5">
+                <p>A dynamic smart-irrigation system dispenses water from an agricultural storage well. The total volume of water remaining in the well decreases linearly over time. At 6:00 AM, the well holds 14,200 gallons. By 11:00 AM on the same day, the volume has dropped to 12,600 gallons. Which equation models the volume of water, $V$, in gallons, remaining in the well $t$ hours after 6:00 AM?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "A">
+                            <span class = "text">A. $V = 14200 - 1600t$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "B">
+                            <span class = "text">B. $V = 12600 - 320t$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "C">
+                            <span class = "text">C. $V = 14200 - 320t$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q5" value = "D">
+                            <span class = "text">D. $V = 14200 + 320t$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q6">
+                <p>An architectural firm uses a specialized large-scale 3D printer for foundational prototyping models. The remaining length of polymer printing filament on a feed spool, $L$, in meters, is modeled as a linear function of the continuous operation runtime, $h$, in hours. If the printer uses 14 meters of filament every 2 hours of use, and a spool retains 212 meters of filament after 5 hours of printing, what was the original length of filament on a full spool?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "A">
+                            <span class = "text">A. $247 meters$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "B">
+                            <span class = "text">B. $219 meters$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "C">
+                            <span class = "text">C. $177 meter$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q6" value = "D">
+                            <span class = "text">D. $282 meters$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q7">
+                <p>A digital distribution platform sells premium simulation software keys. The platform charges corporate clients a fixed licensing baseline access fee plus a uniform price for each individual employee seat key deployed. A team pays a total of $\$450$ for 8 user seats, and another team pays $\$730$ for 15 user seats. Which equation tracks the total cost, $C$, in dollars, for $s$ individual employee seat keys?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "A">
+                            <span class = "text">A. $C = 280s + 130$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "B">
+                            <span class = "text">B. $C = 40s + 450$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "C">
+                            <span class = "text">C. $C = 35s + 170$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q7" value = "D">
+                            <span class = "text">D. $C = 40s + 130$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q8">
+                <p>A non-profit organization coordinates an emergency food relief shipment using a distribution truck with a cargo weight limit constraint. They pack standard ration kits that weigh $15\text{ kg}$ each and family water sanitation kits that weigh $22\text{ kg}$ each. The linear equation $15x + 22y = 3300$ models this operational configuration. If the team updates their strategy to pack extra high-density caloric supplements into every standard ration kit, increasing its unit weight to $18\text{ kg}$, while keeping the family sanitation kit weight and the total weight capacity constraint identical, how will the new line graph compare to the original line graph on an $xy$-plane where $x$ is on the horizontal axis?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "A">
+                            <span class = "text">A. The horizontal intercept stays the same, and the vertical intercept shifts downward.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "B">
+                            <span class = "text">B. The vertical intercept stays the same, and the horizontal intercept shifts left.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "C">
+                            <span class = "text">C. The entire line shifts parallel upward away from the origin.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q8" value = "D">
+                            <span class = "text">D. The vertical intercept shifts upward, and the slope stays identical.</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q9">
+                <p>An aerospace startup tests an experimental sounding rocket. The rocket consumes fuel at a constant linear mass rate during its initial ascent phase. Exactly 12 seconds after ignition, the remaining onboard fuel mass is recorded at 840 kg. Exactly 32 seconds after ignition, the remaining fuel mass has dropped to 540 kg. If the total launch pad dry mass of the structural rocket framework without any fuel is 1,250 kg, which function accurately models the total combined gross mass of the rocket and its remaining fuel, M, in kilograms, as a function of the flight time, t, in seconds?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "A">
+                            <span class = "text">A. $M = -30t + 2270$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "B">
+                            <span class = "text">B. $M = -15t + 1020$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "C">
+                            <span class = "text">C. $M = -15t + 2090$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q9" value = "D">
+                            <span class = "text">D. $M = -15t + 2270$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "question" id = "q10">
+                <p>A commercial manufacturing process relies on two chemical additives to stabilize an industrial compound. The volume of Additive A used, A, in liters, and the volume of Additive B used, B, in liters, must satisfy a specific production balance layout constraint modeled by a linear relationship. If the team uses a configuration where A=12, they must use B=30. If they adjust the process to run with A=20, the required volume of Additive B drops to 10. If the structural safety protocol requires that the volume of Additive B can never be less than 4 liters, what is the maximum possible volume of Additive A, in liters, that can be used within this model framework?</p>
+                <form>
+                    <div class = "row"> 
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "A">
+                            <span class = "text">A. $24.0$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                    
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "B">
+                            <span class = "text">B. $20.5$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "C">
+                            <span class = "text">C. $18.6$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+
+                    <div class = "row">
+                        <label class = "option">
+                            <input type = "radio" name = "q10" value = "D">
+                            <span class = "text">D. $22.4$</span>
+                        </label>
+                        <button type = "button" onclick = "strikeThroughBefore(this)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="12" x2="20" y2="12" />
+                            <path d="M16 7.75A3.5 3.5 0 0 0 12.5 4h-1A3.5 3.5 0 0 0 8 7.75c0 3.16 4 3.16 4 6.3c0 1.9-1.34 3.2-3.5 3.2h-1A3.5 3.5 0 0 1 4 13.5" />
+                        </svg></button>
+                    </div>
+                </form>
+            </div>
+            
+
+            
+        </div>
+
+        <div class = "submit">
+                <p id = "isSelected"></p>
+                <button type = "button" id = "solution" onclick = "showSolution()"> View Explanation</button>
+                <button type = "button" id = "sub" onclick = "gradeQuestion()" >Check Answer</button>
+                <button type = "button" id = "next" onclick = "nextQuestion()">Next Question</button>
+                
+        </div>
+
+        <div id="feedbackModal" class="modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">✕</button>
+                <div id="feedbackBox"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div class="results-card">
+
+            <h1>Quiz Complete</h1>
+
+            <div class="score-circle">
+                <span class="score-number">--</span>
+                <span class="score-label">Score</span>
+            </div>
+
+            <p class="subtitle">
+                Nice work. Here’s how you did on this lesson.
+            </p>
+
+            <div class="results-stats">
+                <div class="stat">
+                    <h2 id = "correct">--</h2>
+                    <p>Correct</p>
+                </div>
+
+                <div class="stat">
+                    <h2 id = "incorrect">--</h2>
+                    <p>Incorrect</p>
+                </div>
+
+                <div class="stat">
+                    <h2>10</h2>
+                    <p>Total</p>
+                </div>
+            </div>
+            <div class = "next_lesson">
+                <a href = "../../Videos/Unit 3/3_5.html"><button>Up Next: Video 3.5</button></a>
+            </div>
+
+        </div>
+        
+    </div>
+
+</body>
+<script>
+    const answers = {
+        q1: "A",
+        q2: "D",
+        q3: "D",
+        q4: "A",
+        q5: "C",
+        q6: "A",
+        q7: "D",
+        q8: "B",
+        q9: "D",
+        q10: "D"
+    }
+
+    const resultsPage = document.querySelector(".results-container");
+    const quizScreen = document.querySelector(".quiz");
+    const resultsCard = document.querySelector(".results-card");
+
+    function strikeThroughBefore(button){
+        const row = button.parentElement;
+        const label = row.querySelector(".option");
+        const radio = label.querySelector("input[type='radio']");
+
+        const isCrossed = label.classList.toggle("crossed");
+
+        if (isCrossed){
+            radio.checked = false;
+        }
+    }
+
+    const questions = document.querySelectorAll(".question");
+    let current = 0;
+
+    function showQuestion(index) {
+        questions.forEach(q => q.classList.remove("active"));
+        questions[index].classList.add("active");
+    }    
+    let numCorrect = 0;
+    const next = document.getElementById("next");
+    const view = document.getElementById("solution");
+    
+    function gradeQuestion() {
+        
+        const activeQuestion = document.querySelector(".question.active");
+        const questionName = activeQuestion.id;
+        const correctOption = activeQuestion.querySelector(`input[value="${answers[questionName]}"]`);
+        const selected = document.querySelector(`input[name="${questionName}"]:checked`);
+        
+        activeQuestion.querySelectorAll(".option").forEach(opt => {
+            opt.style.backgroundColor = "";
+        });
+
+        if (!selected) {
+            alert("Please choose an option before submitting. There are no penalities for guessing on the DSAT!")
+            return;
+        }
+
+        let correctAnswer = answers[questionName];
+        let isCorrect = correctAnswer == selected.value;
+
+        
+        if (isCorrect){
+            selected.closest(".option").style.backgroundColor = "#c8f7c5";
+            numCorrect ++;
+            view.style.display = "block";
+            next.style.display = "block";
+
+        }
+        else {
+            selected.closest(".option").style.backgroundColor = "#f7c5c5";
+            correctOption.closest(".option").style.backgroundColor = "#c8f7c5";
+            view.style.display = "block";
+            next.style.display = "block";
+
+        }
+
+        
+        
+    }
+
+    showQuestion(0);
+    
+    function showSolution() {
+        const modal = document.getElementById("feedbackModal");
+        const box = document.getElementById("feedbackBox");
+        box.innerHTML = `
+            <video src="practice.mp4" controls style="width:100%; border-radius:10px;"></video>
+        `;
+        modal.style.display = "flex";
+
+}
+
+    function closeModal() {
+    document.getElementById("feedbackModal").style.display = "none";
+}
+
+    function nextQuestion() {
+        
+        if (current < questions.length - 1) {
+            current += 1;
+            showQuestion(current);
+        }else{
+            next.style.display = "none";
+            view.style.display = "none";
+            showResults();
+        }
+        next.style.display = "none";
+        view.style.display = "none";
+    }
+    
+    
+
+    const nextLessonButton = document.querySelector(".next_lesson");
+
+    
+
+    function showResults() {
+        quizScreen.style.display = "none";
+        resultsPage.style.display = "flex";
+        resultsCard.style.display = "flex";
+        nextLessonButton.style.display = "block";
+
+        document.getElementById("correct").textContent = numCorrect;
+        document.getElementById("incorrect").textContent = questions.length - numCorrect;
+
+        document.querySelector(".score-number").textContent = Math.round(numCorrect / questions.length * 100) + "%"
+    }
+</script>
+</html>
